@@ -21,7 +21,10 @@ class ObjectTrackingImageAnalyzer(
             )
                 .addOnSuccessListener { objects ->
                     onDetectorSuccess(
-                        Size(image.width, image.height),
+                        Size(image.width, image.height)
+                            .rotationAdjustedImageSize(
+                                imageProxy.imageInfo.rotationDegrees
+                            ),
                         objects
                     )
                 }
@@ -30,4 +33,14 @@ class ObjectTrackingImageAnalyzer(
                 }
         }
     }
+}
+
+private fun Size.rotationAdjustedImageSize(imageRotationDegrees: Int): Size {
+    val rotationAdjustedWidth = if (imageRotationDegrees == 90 || imageRotationDegrees == 270) height else width
+    val rotationAdjustedHeight = if (imageRotationDegrees == 90 || imageRotationDegrees == 270) width else height
+
+    return Size(
+        rotationAdjustedWidth,
+        rotationAdjustedHeight
+    )
 }

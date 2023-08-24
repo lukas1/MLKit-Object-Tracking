@@ -1,5 +1,6 @@
 package com.garwan.mlkitjetpackcompose.ui.screen.views
 
+import android.util.Size
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,11 +16,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.sp
+import com.garwan.mlkitjetpackcompose.ui.screen.util.adjustedFromImageToCanvas
 import com.google.mlkit.vision.objects.DetectedObject
 
 @Composable
 fun ObjectTrackingOverlay(
-    detectedObjects: List<DetectedObject>
+    detectedObjects: List<DetectedObject>,
+    imageSize: Size
 ) {
     val textMeasurer = rememberTextMeasurer()
     Spacer(
@@ -27,7 +30,7 @@ fun ObjectTrackingOverlay(
             .drawBehind {
                 detectedObjects
                     .forEach { detectedObject ->
-                        drawDetectedObjectRect(detectedObject, textMeasurer)
+                        drawDetectedObjectRect(detectedObject, textMeasurer, imageSize)
                     }
             }
     )
@@ -35,10 +38,12 @@ fun ObjectTrackingOverlay(
 
 private fun DrawScope.drawDetectedObjectRect(
     detectedObject: DetectedObject,
-    textMeasurer: TextMeasurer
+    textMeasurer: TextMeasurer,
+    imageSize: Size
 ) {
     val detectedObjectBoundingBox = detectedObject.boundingBox
         .toComposeRect()
+        .adjustedFromImageToCanvas(imageSize, this.size)
 
     drawRect(
         color = Color.Red,

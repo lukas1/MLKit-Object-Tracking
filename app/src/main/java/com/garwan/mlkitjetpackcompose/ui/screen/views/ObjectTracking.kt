@@ -1,5 +1,6 @@
 package com.garwan.mlkitjetpackcompose.ui.screen.views
 
+import android.util.Size
 import androidx.camera.view.LifecycleCameraController
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -15,6 +16,9 @@ import com.google.mlkit.vision.objects.DetectedObject
 
 @Composable
 fun ObjectTracking() {
+    var analyzedImageSize by remember {
+        mutableStateOf(Size(0, 0))
+    }
     var detectedObjects by remember {
         mutableStateOf(listOf<DetectedObject>())
     }
@@ -30,6 +34,7 @@ fun ObjectTracking() {
                 ObjectTrackingImageAnalyzer(
                     objectDetector = customObjectDetector()
                 ) { imageSize, objects ->
+                    analyzedImageSize = imageSize
                     detectedObjects = objects
                 }
             )
@@ -38,5 +43,8 @@ fun ObjectTracking() {
 
     CameraPreview(cameraController)
 
-    ObjectTrackingOverlay(detectedObjects = detectedObjects)
+    ObjectTrackingOverlay(
+        detectedObjects = detectedObjects,
+        imageSize = analyzedImageSize
+    )
 }
