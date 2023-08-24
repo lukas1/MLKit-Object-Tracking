@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.garwan.mlkitjetpackcompose.ui.screen.views.ObjectTracking
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -20,7 +21,7 @@ fun MainScreen() {
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
 
     if (cameraPermissionState.status.isGranted) {
-        // TODO: Show camera view
+        ObjectTracking()
     } else {
         LaunchedEffect(key1 = "permission_request", block = {
             cameraPermissionState.launchPermissionRequest()
