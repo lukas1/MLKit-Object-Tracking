@@ -81,4 +81,4 @@ Notice also, that we're wrapping the initialization of `LifecycleCameraControlle
 
 Not that it would also be possible to create an instance of the `LifecycleCameraController` in the `MainActivity` and pass it down to the composable, but this way our activity remains clean and simple. No need for the activity to be concerned about what it children composables are up to. Also, this allows us to avoid creating the instance of `CameraController` if the user did not grant permissions to camera.
 
-And that's it. With this code, user is able to see on the screen a functioning camera preview. See you again in Step 3, where we'll start preparations for object tracking.
+And that's it. With this code, user is able to see on the screen a functioning camera preview. See you again in [Step 3](step_3.md), where we'll start preparations for object tracking.

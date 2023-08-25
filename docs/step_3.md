@@ -80,4 +80,4 @@ Our class implements `ImageAnalysis.Analyzer` interface. The interface requires 
 
 We're passing the list of detected objects to a callback `onDetectorSuccess`. This way we can get the results out of the `ObjectTrackingImageAnalyzer` and use them in our composables. Note that not only are we returning the list of detected objects, we're also returning the size of the image. Don't worry about it now, it will be needed in later step, when we'll draw a rectangle, tracking the detected object on the screen.
 
-Now we have made all the preparations to use MLKit in our app. See you again at Step 4, where we'll talk about how to connect the image analyzer to the camera controller.
+Now we have made all the preparations to use MLKit in our app. See you again at [Step 4](step_4.md), where we'll talk about how to connect the image analyzer to the camera controller.

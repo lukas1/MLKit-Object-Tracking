@@ -159,4 +159,4 @@ The only new line here is the line at the bottom, calling the `ObjectTrackingOve
 
 And that's it. We've used CameraX library together with MLKit, to track objects and draw a tracking rectangle on screen using Jetpack Compose. So we're finished, right? Actually it would probably be disappointing to finish now, wouldn't it? You may have noticed that the `imageSize` of the `onDetectorSuccess` callback is not used. Not only that, no doubt at least some readers of this tutorial have tried to run the code and noticed that the rectangle drawn on the screen is not properly positioned in respect to the tracked object and it's also too small. 
 
-Aren't we going to fix it? Yes, we are. See you again in Step 5 of this tutorial, where we'll scale and place the rectangle properly.
+Aren't we going to fix it? Yes, we are. See you again in [Step 5](step_5.md) of this tutorial, where we'll scale and place the rectangle properly.

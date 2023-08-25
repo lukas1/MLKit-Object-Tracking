@@ -84,4 +84,4 @@ Now when the user opens the app for the first time, they'll see a screen asking 
 
 in the `else` block of the `MainScreen` composable. Now when the user runs the app, the permission request dialogue is opened automatically.
 
-And with that, we're done with the Step 1! See you again at Step 2.
+And with that, we're done with the Step 1! See you again at [Step 2](step_2.md).
